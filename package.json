@@ -1,0 +1,15 @@
+{
+  "name": "is217-final-exam",
+  "version": "0.0.1",
+  "description": "IS 217 Final Exam",
+  "main": "app.js",
+  "scripts": {
+    "start": "node --harmony app.js",
+    "test": "mocha"
+  },
+  "author": "Grant Butler",
+  "license": "ISC",
+  "dependencies": {
+    "koa": "^0.6.1"
+  }
+}
