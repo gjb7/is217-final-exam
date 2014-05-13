@@ -1,4 +1,5 @@
 var path = require('path'),
+	fs = require('fs'),
 	koa = require('koa'),
 	_ = require('koa-route'),
 	serve = require('koa-static'),
@@ -7,5 +8,7 @@ var path = require('path'),
 
 app.use(serve(path.join(__dirname, 'public')));
 app.use(body());
+
+
 
 app.listen(3000);
