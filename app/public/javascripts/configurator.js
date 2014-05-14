@@ -31,6 +31,8 @@
 			self.configuratorElm.append(fieldset);
 		});
 		
+		this._selectIncludedOptions();
+		
 		this._updateTotal();
 	}
 	
@@ -74,9 +76,34 @@
 		})
 		
 		label.append(input);
-		label.append(option.name);
+		
+		var nameSpan = $('<span />');
+		nameSpan.append(option.name);
+		
+		label.append(nameSpan);
+		
+		var priceSpan = $('<span />');
+		priceSpan.addClass('option-price');
+		
+		if (option.price != 0) {
+			priceSpan.html(' &ndash; +' + accounting.formatMoney(option.price));
+		}
+		
+		label.append(priceSpan);
 		
 		return radioDiv;
+	}
+	
+	Configurator.prototype._selectIncludedOptions = function() {
+		this.laptop.componentOptionGroups.forEach(function(group) {
+			for(var i = 0; i < group.componentOptions.length; i++) {
+				var option = group.componentOptions[i];
+				
+				if (option.price == 0) {
+					$('input[value="' + option._id + '"]').attr('checked', true);
+				}
+			}
+		});
 	}
 	
 	Configurator.prototype._updateTotal = function() {
