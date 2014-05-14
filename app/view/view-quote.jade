@@ -1,10 +1,25 @@
 extends layout
 
+
+
 block content
 	h3
-		= quote.laptop.name + ' - ' + quote.laptop.basePrice
+		= quote.laptop.name + ' '
+		small
+			| [
+			span.price
+				= quote.laptop.basePrice
+			| ] 
 	
 	ul
 		for option in quote.componentOptions
 			li
-				= option.name + ' - ' + option.price
+				= option.name
+				
+				if option.price > 0
+					= ' '
+					small
+						| [
+						span.price
+							= option.price
+						| ]
