@@ -1,0 +1,10 @@
+extends layout
+
+block content
+	h3
+		= quote.laptop.name + ' - ' + quote.laptop.basePrice
+	
+	ul
+		for option in quote.componentOptions
+			li
+				= option.name + ' - ' + option.price
