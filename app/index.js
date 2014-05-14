@@ -3,7 +3,7 @@ var path = require('path'),
 	Promise = require('promise');
 
 module.exports = function(app) {
-	return loadControllers(app);
+	return loadControllers(app).then(loadModels);
 };
 
 function loadControllers(app) {
@@ -22,5 +22,11 @@ function loadControllers(app) {
 				fulfill();
 			}
 		});
+	});
+}
+
+function loadModels() {
+	return new Promise(function(fulfill, reject) {
+		fulfill();
 	});
 }
