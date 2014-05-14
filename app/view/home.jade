@@ -3,7 +3,8 @@ extends layout
 block append javascripts
 	script(type="text/javascript").
 		$('.price').each(function() {
-			$(this).text(accounting.formatMoney($(this).text()));
+			var self = $(this);
+			self.text(accounting.formatMoney(self.text()));
 		});
 
 block content
