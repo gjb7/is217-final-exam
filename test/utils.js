@@ -7,7 +7,7 @@ describe('utils', function() {
 	describe('#calculateCost', function() {
 		var laptop = {
 			name: 'Laptop',
-			baseCost: 1000
+			basePrice: 1000
 		};
 		
 		var componentOptions = [
