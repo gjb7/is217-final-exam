@@ -54,6 +54,15 @@
 		return fieldset;
 	}
 	
+	Configurator.prototype._formattedPriceString = function(price) {
+		var sign = (price < 0) ? '-' : '+';
+		price = Math.abs(price);
+		
+		var formattedPrice = sign + accounting.formatMoney(price);
+		
+		return '[' + formattedPrice + ']';
+	}
+	
 	Configurator.prototype._renderComponentOption = function(group, option) {
 		var radioDiv = $('<div />');
 		radioDiv.addClass('radio');
@@ -72,6 +81,7 @@
 		
 		var self = this;
 		input.click(function() {
+			self._updatePricing($(this));
 			self._updateTotal();
 		})
 		
@@ -81,15 +91,17 @@
 		nameSpan.append(option.name);
 		
 		label.append(nameSpan);
+		label.append(' ');
 		
-		var priceSpan = $('<span />');
-		priceSpan.addClass('option-price');
+		var priceSmall = $('<small />');
+		priceSmall.addClass('option-price');
+		priceSmall.attr('rel', option._id);
 		
 		if (option.price != 0) {
-			priceSpan.html(' &ndash; +' + accounting.formatMoney(option.price));
+			priceSmall.text(this._formattedPriceString(option.price));
 		}
 		
-		label.append(priceSpan);
+		label.append(priceSmall);
 		
 		return radioDiv;
 	}
@@ -102,6 +114,28 @@
 				if (option.price == 0) {
 					$('input[value="' + option._id + '"]').attr('checked', true);
 				}
+			}
+		});
+	}
+	
+	Configurator.prototype._updatePricing = function(elm) {
+		var groupID = elm.attr('name');
+		var optionID = elm.attr('value');
+		
+		var selectedOption = this.componentOptions[optionID];
+		var self = this;
+		
+		var radioElements = Array.prototype.slice.call(document.getElementsByName(groupID));
+		radioElements.forEach(function(element) {
+			var option = self.componentOptions[$(element).attr('value')];
+			var priceSmall = $('small[rel="' + option._id + '"]');
+			
+			if (option._id == optionID) {
+				priceSmall.text('');
+			}
+			else {
+				var priceDifference = option.price - selectedOption.price;
+				priceSmall.text(self._formattedPriceString(priceDifference));
 			}
 		});
 	}
