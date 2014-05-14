@@ -20,7 +20,7 @@ MongoClient.connect('mongodb://localhost/is217-final-exam', function(err, db) {
 	app.use(serve(path.join(__dirname, 'app', 'public')));
 	app.use(body());
 	
-	require('./app')(app);
+	require('./app')(app, _);
 	
 	app.listen(3000);
 });
