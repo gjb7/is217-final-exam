@@ -4,3 +4,7 @@ var mocha = require('mocha'),
 	Laptop = require('../app/model/Laptop'),
 	ComponentOption = require('../app/model/ComponentOption'),
 	Quote = require('../app/model/Quote');
+
+describe('Quote', function() {
+	
+});
