@@ -14,7 +14,7 @@ MongoClient.connect('mongodb://localhost/is217-final-exam', function(err, db) {
 	}
 	
 	swig(app, {
-		root: path.join(__dirname, 'app', 'views'),
+		root: path.join(__dirname, 'app', 'view'),
 		ext: 'swig'
 	});
 	
