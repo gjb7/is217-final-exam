@@ -16,6 +16,10 @@ describe('Quote', function() {
 			var option = new ComponentOption;
 			option.price = 200;
 			quote.componentOptions.push(option);
+			
+			option = new ComponentOption;
+			option.price = 100;
+			quote.componentOptions.push(option);
 		});
 	});
 });
