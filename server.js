@@ -21,4 +21,6 @@ app.use(body());
 
 require('./app')(app).done(function() {
 	app.listen(3000);
+	
+	console.log('Server listening on 0.0.0.0:3000.');
 }, function(err) { throw err; });
