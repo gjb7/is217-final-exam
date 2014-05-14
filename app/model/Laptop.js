@@ -5,9 +5,9 @@ var mongoose = require('mongoose'),
 var LaptopSchema = new Schema({
 	name: String,
 	basePrice: Number,
-	optionGroups: [{
+	componentOptionGroups: [{
 		type: ObjectId,
-		ref: 'OptionGroup'
+		ref: 'ComponentOptionGroup'
 	}]
 });
 
