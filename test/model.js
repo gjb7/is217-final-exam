@@ -9,6 +9,8 @@ var mocha = require('mocha'),
 
 mockgoose(mongoose);
 
+mongoose.connect('mongodb://localhost/test');
+
 describe('Quote', function() {
 	describe('#totalCost', function() {
 		it('should calculate correctly', function() {
