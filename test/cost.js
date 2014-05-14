@@ -3,5 +3,7 @@ var mocha = require('mocha'),
 	utils = require('../app/lib/utils');
 
 describe('utils', function() {
-	
+	describe('#calculateCost', function() {
+		
+	});
 });
