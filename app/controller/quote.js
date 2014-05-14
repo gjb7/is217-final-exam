@@ -5,9 +5,12 @@ var Quote = require('../model/Quote'),
 module.exports = function(app) {
 	app.get('/quote/new', function *() {
 		var laptop = yield Laptop.findOne().populate('componentOptionGroups').exec();
-		yield ComponentOption.populate(laptop, {
-			path: 'componentOptionGroups.componentOptions'
-		});
+		laptop = laptop.toObject();
+		
+		for (var i = 0; i < laptop.componentOptionGroups.length; i++) {
+			var options = yield ComponentOption.find({ _id: { $in: laptop.componentOptionGroups[i].componentOptions }}).exec();
+			laptop.componentOptionGroups[i].componentOptions = options;
+		}
 		
 		yield this.render('new-quote', {
 			laptop: laptop
