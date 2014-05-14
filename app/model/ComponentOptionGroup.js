@@ -1,4 +1,5 @@
 var mongoose = require('mongoose'),
+	util = require('../lib/util'),
 	Schema = mongoose.Schema,
 	ObjectId = Schema.Types.ObjectId;
 
@@ -12,7 +13,7 @@ var ComponentOptionGroupSchema = new Schema({
 });
 
 ComponentOptionGroupSchema.pre('save', function(next) {
-	this.slug = title.toLowerCase().replace(/[ _]/g, '-').replace(/[^0-9a-z\-]/g, '');
+	this.slug = util.toSlug(this.title);
 	
 	next();
 });
