@@ -1,5 +1,6 @@
 var path = require('path'),
 	fs = require('fs'),
+	mongoose = require('mongoose'),
 	koa = require('koa'),
 	serve = require('koa-static'),
 	body = require('koa-body'),
