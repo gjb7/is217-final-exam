@@ -6,6 +6,7 @@ var path = require('path'),
 	body = require('koa-body'),
 	logger = require('koa-logger'),
 	views = require('koa-views'),
+	router = require('koa-router'),
 	app = koa();
 
 mongoose.connect('mongodb://localhost/is217-final-exam');
@@ -17,6 +18,7 @@ app.use(views(path.join(__dirname, 'app', 'view'), {
 app.use(logger());
 app.use(serve(path.join(__dirname, 'app', 'public')));
 app.use(body());
+app.use(router(app));
 
 require('./app')(app).done(function() {
 	app.listen(3000);
