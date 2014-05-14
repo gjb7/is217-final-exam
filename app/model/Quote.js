@@ -17,13 +17,7 @@ var QuoteSchema = new Schema({
 QuoteSchema
 	.virtual('totalPrice')
 	.get(function() {
-		var totalPrice = this.laptop.basePrice;
-		
-		this.componentOptions.forEach(function(option) {
-			totalPrice += option.price;
-		});
-		
-		return totalPrice;
+		return utils.calculateCost(this.laptop, this.componentOptions);
 	});
 
 QuoteSchema.set('toObject', { virtuals: true });
