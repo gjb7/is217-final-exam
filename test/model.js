@@ -6,5 +6,7 @@ var mocha = require('mocha'),
 	Quote = require('../app/model/Quote');
 
 describe('Quote', function() {
-	
+	describe('#totalCost', function() {
+		
+	});
 });
