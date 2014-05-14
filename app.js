@@ -9,8 +9,12 @@ var path = require('path'),
 app.use(serve(path.join(__dirname, 'public')));
 app.use(body());
 
-fs.readdir(path.join(__dirname, 'app'), function(err, files) {
-	
+var appDir = path.join(__dirname, 'app');
+
+fs.readdir(appDir, function(err, files) {
+	files.forEach(function(file) {
+		require(path.join(appDir, file))(app);
+	});
 });
 
 app.listen(3000);
