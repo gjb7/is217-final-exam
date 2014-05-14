@@ -2,4 +2,4 @@
 
 {% block content %}
 <p>This is the body.</p>
-{% endblock}
+{% endblock %}
