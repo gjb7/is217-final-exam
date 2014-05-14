@@ -32,7 +32,7 @@
 		});
 		
 		this._selectIncludedOptions();
-		
+		this._renderSpecList();
 		this._updateTotal();
 	}
 	
@@ -137,6 +137,22 @@
 				var priceDifference = option.price - selectedOption.price;
 				priceSmall.text(self._formattedPriceString(priceDifference));
 			}
+		});
+	}
+	
+	Configurator.prototype._renderSpecList = function() {
+		var specList = $('#specs');
+		specList.empty();
+		
+		var self = this;
+		
+		$('.componentOption:checked').each(function() {
+			var name = $(this).attr('value');
+			var option = self.componentOptions[name];
+			
+			var specItem = $('<li />');
+			specItem.text(option.name);
+			specList.append(specItem);
 		});
 	}
 	
