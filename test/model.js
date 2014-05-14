@@ -12,6 +12,10 @@ describe('Quote', function() {
 			
 			quote.laptop = new Laptop;
 			quote.laptop.basePrice = 1000;
+			
+			var option = new ComponentOption;
+			option.price = 200;
+			quote.componentOptions.push(option);
 		});
 	});
 });
