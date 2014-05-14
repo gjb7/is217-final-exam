@@ -1,3 +1,6 @@
+var path = require('path'),
+	fs = require('fs');
+
 module.exports = function(app) {
 	var controllerDir = path.join(__dirname, 'controller');
 	
