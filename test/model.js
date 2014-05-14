@@ -1,6 +1,7 @@
 var mocha = require('mocha'),
 	chai = require('chai'),
 	expect = chai.expect,
+	mongoose = require('mongoose'),
 	Laptop = require('../app/model/Laptop'),
 	ComponentOption = require('../app/model/ComponentOption'),
 	Quote = require('../app/model/Quote');
@@ -24,6 +25,8 @@ describe('Quote', function() {
 			option = new ComponentOption;
 			option.price = 0;
 			quote.componentOptions.push(option);
+			
+			expect(quote.get('totalPrice')).to.equal(1300);
 		});
 	});
 });
