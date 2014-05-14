@@ -10,10 +10,8 @@ var path = require('path'),
 
 mongoose.connect('mongodb://localhost/is217-final-exam');
 
-app.use(views({
-	map: {
-		html: 'underscore'
-	}
+app.use(views(path.join(__dirname, 'app', 'view'), {
+	default: 'jade'
 }));
 
 app.use(logger());
