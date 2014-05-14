@@ -1,7 +1,7 @@
-(function($) {
+(function(global) {
 	function Configurator(data) {
-		
+		this.data = data;
 	}
 	
-	$.Configurator = Configurator;
+	global.Configurator = Configurator;
 })(this);
