@@ -11,11 +11,14 @@ module.exports = function() {
 				reject(err);
 			}
 			else {
-				files.forEach(function(file) {
-					require(path.join(modelDir, file));
+				var models = {};
+				
+				files.map(function(file) {
+					var modelName = path.basename(file, path.extname(path));
+					models[modelName] = require(path.join(modelDir, file));
 				});
 				
-				fulfill();
+				fulfill(models);
 			}
 		});
 	});
