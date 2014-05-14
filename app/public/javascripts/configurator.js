@@ -82,6 +82,7 @@
 		var self = this;
 		input.click(function() {
 			self._updatePricing($(this));
+			self._renderSpecList();
 			self._updateTotal();
 		})
 		
