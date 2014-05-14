@@ -5,6 +5,7 @@ var path = require('path'),
 	serve = require('koa-static'),
 	body = require('koa-body'),
 	swig = require('koa-swig'),
+	logger = require('koa-logger'),
 	app = koa();
 
 MongoClient.connect('mongodb://localhost/is217-final-exam', function(err, db) {
