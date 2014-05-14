@@ -12,7 +12,7 @@ block content
 		h3= laptop.name
 		
 		.row
-			.col-md-9
+			.col-md-9.configurator
 				for group in laptop.componentOptionGroups
 					fieldset
 						legend= group.title
@@ -27,3 +27,9 @@ block content
 				input(type="submit", value="Save", class="btn btn-primary")
 			.col-md-3.bg-info
 				h4 Laptop Configuration
+				
+				h4#price 0.00
+				
+				p= laptop.name
+				
+				ul#specs
