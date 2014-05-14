@@ -18,9 +18,19 @@ module.exports = function(app) {
 	});
 	
 	app.post('/quote/new', function *() {
+		var laptop = yield Laptop.findOne().exec();
+		var options = [];
 		
+		for (var key in this.request.body) {
+			options.push(this.request.body[key]);
+		}
 		
-/* 		this.redirect('/quote/'); */
+		yield Quote.create({
+			laptop: laptop,
+			componentOptions: options
+		});
+		
+		this.redirect('/quote');
 	});
 	
 	app.get('/quote/([0-9a-z]+)', function *(id) {
