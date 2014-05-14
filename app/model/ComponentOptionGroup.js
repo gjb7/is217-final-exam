@@ -2,15 +2,12 @@ var mongoose = require('mongoose'),
 	Schema = mongoose.Schema,
 	ObjectId = Schema.Types.ObjectId;
 
-var QuoteSchema = new Schema({
-	laptop: {
-		type: ObjectId,
-		ref: 'Laptop'
-	},
+var ComponentOptionGroupSchema = new Schema({
+	title: String,
 	componentOptions: [{
 		type: ObjectId,
 		ref: 'ComponentOption'
 	}]
 });
 
-module.exports = mongoose.model('Quote', QuoteSchema);
+module.exports = mongoose.model('ComponentOptionGroup', ComponentOptionGroupSchema);
