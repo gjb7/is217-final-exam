@@ -25,7 +25,7 @@ describe('utils', function() {
 		];
 		
 		it('should calculate the cost of a laptop with components', function() {
-			
+			expect(utils.calculateCost(laptop, componentOptions)).to.equal(1400);
 		});
 	});
 });
