@@ -9,7 +9,7 @@ module.exports = function(app) {
 		yield this.render('new-quote');
 	});
 	
-	app.post('/quote', function *() {
+	app.post('/quote/new', function *() {
 		
 	});
 };
