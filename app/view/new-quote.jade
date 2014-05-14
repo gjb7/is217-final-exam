@@ -12,17 +12,18 @@ block content
 		h3= laptop.name
 		
 		.row
-			.col-md-9#configurator
-				for group in laptop.componentOptionGroups
-					fieldset
-						legend= group.title
-							
-						for option, index in group.componentOptions
-							.radio
-								label
-									input(type="radio", name=group._id, value=option._id, checked=(index == 0))
-									
-									= option.name
+			.col-md-9
+				#configurator
+					for group in laptop.componentOptionGroups
+						fieldset
+							legend= group.title
+								
+							for option, index in group.componentOptions
+								.radio
+									label
+										input(type="radio", name=group._id, value=option._id, checked=(index == 0))
+										
+										= option.name
 							
 				input(type="submit", value="Save", class="btn btn-primary")
 			.col-md-3.bg-info
