@@ -4,4 +4,5 @@ block content
 		a(href="/quote/new") New Quote
 	for quote in quotes
 		p
-			a(href="/quote/" + quote.id) quote.laptop.name
+			a(href="/quote/" + quote._id)
+				= quote.laptop.name
