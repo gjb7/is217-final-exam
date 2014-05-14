@@ -8,10 +8,10 @@ block content
 			fieldset
 				legend= group.title
 					
-					for option in group.componentOptions
-						input(type="radio", name=group._id, value=option._id)
-						
-						= option.name
-						br
+				for option in group.componentOptions
+					input(type="radio", name=group._id, value=option._id)
+					
+					= option.name
+					br
 					
 		input(type="submit", value="Save")
