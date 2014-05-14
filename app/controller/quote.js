@@ -25,12 +25,12 @@ module.exports = function(app) {
 			options.push(this.request.body[key]);
 		}
 		
-		yield Quote.create({
+		var quote = yield Quote.create({
 			laptop: laptop,
 			componentOptions: options
 		});
 		
-		this.redirect('/quote');
+		this.redirect('/quote/' + quote._id);
 	});
 	
 	app.get('/quote/:id', function *(id) {
