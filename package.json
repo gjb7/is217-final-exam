@@ -16,6 +16,7 @@
     "koa-route": "^1.1.4",
     "koa-static": "^1.4.5",
     "koa-swig": "^0.4.1",
-    "mongoose": "^3.8.9"
+    "mongoose": "^3.8.9",
+    "promise": "^5.0.0"
   }
 }
