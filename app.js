@@ -9,6 +9,8 @@ var path = require('path'),
 app.use(serve(path.join(__dirname, 'public')));
 app.use(body());
 
-
+fs.readdir(path.join(__dirname, 'app'), function(err, files) {
+	
+});
 
 app.listen(3000);
