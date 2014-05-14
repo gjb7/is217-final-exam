@@ -7,3 +7,5 @@ function calculateCost(laptop, componentOptions) {
 	
 	return totalPrice;
 };
+
+module.exports.calculateCost = calculateCost;
