@@ -31,7 +31,13 @@ describe('Quote', function() {
 			option.price = 0;
 			quote.componentOptions.push(option);
 			
-			expect(quote.get('totalPrice')).to.equal(1300);
+			quote.save(function(err) {
+				if (err) {
+					throw err;
+				}
+				
+				expect(quote.get('totalPrice')).to.equal(1300);
+			});
 		});
 	});
 });
