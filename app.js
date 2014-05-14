@@ -8,6 +8,12 @@ var path = require('path'),
 	swig = require('koa-swig'),
 	app = koa();
 
+mongodb.MongoClient.connect('mongodb://localhost/is217-final-exam', function(err, db) {
+	if (err) {
+		throw err;
+	}
+});
+
 swig(app, {
 	root: path.join(__dirname, 'app', 'views')
 });
