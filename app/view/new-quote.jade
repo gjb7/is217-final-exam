@@ -3,3 +3,7 @@ extends layout
 block content
 	form(method="post", action="/quote/new")
 		p= laptop.name
+		
+		for group in laptop.componentOptionGroups
+			fieldset
+				legend= group.title
