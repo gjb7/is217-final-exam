@@ -3,10 +3,10 @@ var path = require('path'),
 	Promise = require('promise');
 
 module.exports = function(app) {
-	
+	return loadControllers(app);
 };
 
-function loadControllers() {
+function loadControllers(app) {
 	return new Promise(function(fulfill, reject) {
 		var controllerDir = path.join(__dirname, 'controller');
 		
