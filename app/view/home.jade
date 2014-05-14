@@ -15,5 +15,9 @@ block content
 					td
 						a(href="/quote/" + quote._id)
 							= quote.laptop.name
+						ul
+							for option in quote.componentOptions
+								li
+									= option.name
 					td
 						= quote.laptop.basePrice
