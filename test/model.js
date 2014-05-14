@@ -9,6 +9,9 @@ describe('Quote', function() {
 	describe('#totalCost', function() {
 		it('should calculate correctly', function() {
 			var quote = new Quote;
+			
+			quote.laptop = new Laptop;
+			quote.laptop.basePrice = 1000;
 		});
 	});
 });
