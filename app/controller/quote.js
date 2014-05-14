@@ -1,9 +1,13 @@
 var Quote = require('../model/Quote'),
-	Laptop = require('../model/Laptop');
+	Laptop = require('../model/Laptop'),
+	ComponentOption = require('../model/ComponentOption');
 
 module.exports = function(app) {
 	app.get('/quote/new', function *() {
-		var laptop = yield Laptop.findOne().populate('componentOptionGroups componentOptionGroups.componentOptions').exec();
+		var laptop = yield Laptop.findOne().populate('componentOptionGroups').exec();
+		yield ComponentOption.populate(laptop, {
+			path: 'componentOptionGroups.componentOptions'
+		});
 		
 		yield this.render('new-quote', {
 			laptop: laptop
