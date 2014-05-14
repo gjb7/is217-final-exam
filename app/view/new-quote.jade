@@ -1,20 +1,23 @@
 extends layout
 
 block content
-	form(method="post", action="/quote/new")
+	form(method="post", action="/quote/new", role="form")
 		h3= laptop.name
 		
-		for group in laptop.componentOptionGroups
-			fieldset
-				legend= group.title
-					
-				for option in group.componentOptions
-					input(type="radio", name=group._id, value=option._id)
-					
-					= option.name
-					br
-					
-		input(type="submit", value="Save", class="btn btn-primary")
+		.row
+			for group in laptop.componentOptionGroups
+				fieldset
+					legend= group.title
+						
+					for option in group.componentOptions
+						div.radio
+							label
+								input(type="radio", name=group._id, value=option._id)
+								
+								= option.name
+						
+			input(type="submit", value="Save", class="btn btn-primary")
+		
 	
 	script(type="text/javascript")
 		// TODO: Create configurator thing.
