@@ -1,0 +1,6 @@
+extends layout
+block content
+	p
+		a(href="") New Quote
+	for quote in quotes
+		p= quote.laptop.name
