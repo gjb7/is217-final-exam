@@ -13,6 +13,8 @@ var ComponentOptionGroupSchema = new Schema({
 
 ComponentOptionGroupSchema.pre('save', function(next) {
 	this.slug = title.toLowerCase().replace(/[ _]/g, '-').replace(/[^0-9a-z\-]/g, '');
+	
+	next();
 });
 
 module.exports = mongoose.model('ComponentOptionGroup', ComponentOptionGroupSchema);
