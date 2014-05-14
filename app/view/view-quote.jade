@@ -1,6 +1,10 @@
 extends layout
 
-
+block append javascripts
+	script(type="text/javascript").
+		$('.price').each(function() {
+			$(this).text(accounting.formatMoney($(this).text()));
+		});
 
 block content
 	h3
