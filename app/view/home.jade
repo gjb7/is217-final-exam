@@ -1,4 +1,11 @@
 extends layout
+
+block append javascripts
+	script(type="text/javascript").
+		$('.price').each(function() {
+			$(this).text(accounting.formatMoney($(this).text()));
+		});
+
 block content
 	a(href="/quote/new", class="btn btn-primary") New Quote
 	
@@ -19,5 +26,5 @@ block content
 							for option in quote.componentOptions
 								li
 									= option.name
-					td
+					td.price
 						= quote.totalPrice
