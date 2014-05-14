@@ -27,6 +27,19 @@ function loadControllers(app) {
 
 function loadModels() {
 	return new Promise(function(fulfill, reject) {
-		fulfill();
+		var modelDir = path.join(__dirname, 'model');
+		
+		fs.readdir(modelDir, function(err, files) {
+			if (err) {
+				reject(err);
+			}
+			else {
+				files.forEach(function(file) {
+					require(path.join(modelDir, file));
+				});
+				
+				fulfill();
+			}
+		});
 	});
 }
