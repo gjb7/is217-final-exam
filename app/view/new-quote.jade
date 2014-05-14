@@ -10,3 +10,6 @@ block content
 					
 					for option in group.componentOptions
 						input(type="radio", name=group._id, value=option._id)
+						
+						= option.name
+						br
