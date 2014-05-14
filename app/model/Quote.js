@@ -1,4 +1,5 @@
 var mongoose = require('mongoose'),
+	utils = require('../lib/utils'),
 	Schema = mongoose.Schema,
 	ObjectId = Schema.Types.ObjectId;
 
