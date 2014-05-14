@@ -19,6 +19,6 @@ app.use(logger());
 app.use(serve(path.join(__dirname, 'app', 'public')));
 app.use(body());
 
-require('./app')(app, function() {
+require('./app')(app).done(function() {
 	app.listen(3000);
-});
+}, function(err) { throw err; });
