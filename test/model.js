@@ -20,6 +20,10 @@ describe('Quote', function() {
 			option = new ComponentOption;
 			option.price = 100;
 			quote.componentOptions.push(option);
+			
+			option = new ComponentOption;
+			option.price = 0;
+			quote.componentOptions.push(option);
 		});
 	});
 });
