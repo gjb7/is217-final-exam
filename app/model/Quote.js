@@ -13,4 +13,18 @@ var QuoteSchema = new Schema({
 	}]
 });
 
+QuoteSchema
+	.virtual('totalPrice')
+	.get(function() {
+		var totalPrice = this.laptop.basePrice;
+		
+		this.componentOptions.forEach(function(option) {
+			totalPrice += option.price;
+		});
+		
+		return totalPrice;
+	});
+
+QuoteSchema.set('toObject', { virtuals: true });
+
 module.exports = mongoose.model('Quote', QuoteSchema);
