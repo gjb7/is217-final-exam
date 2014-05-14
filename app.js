@@ -8,10 +8,10 @@ var path = require('path'),
 	app = koa();
 
 swig(app, {
-	root: path.join(__dirname, 'views')
+	root: path.join(__dirname, 'app', 'views')
 });
 
-app.use(serve(path.join(__dirname, 'public')));
+app.use(serve(path.join(__dirname, 'app', 'public')));
 app.use(body());
 
 require('./app')(app);
