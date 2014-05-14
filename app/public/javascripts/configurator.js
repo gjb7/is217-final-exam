@@ -1,4 +1,4 @@
-(function(global, $) {
+(function(global, $, accounting) {
 	function Configurator(data) {
 		this.laptop = data;
 		this.componentOptions = {};
@@ -89,8 +89,8 @@
 			total += option.price;
 		});
 		
-		this.priceDisplayElm.text(total);
+		this.priceDisplayElm.text(accounting.formatMoney(total));
 	}
 	
 	global.Configurator = Configurator;
-})(this, jQuery);
+})(this, jQuery, accounting);
