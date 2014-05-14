@@ -2,19 +2,18 @@ extends layout
 block content
 	a(href="/quote/new", class="btn btn-primary") New Quote
 	
-	if qoutes
-		table
-			thead
+	table(width="100%")
+		thead
+			tr
+				th
+					| Laptop
+				th
+					| Price
+		tbody
+			for quote in quotes
 				tr
-					th
-						| Laptop
-					th
-						| Price
-			tbody
-				for quote in quotes
-					tr
-						td
-							a(href="/quote/" + quote._id)
-								= quote.laptop.name
-						td
-							= quote.laptop.basePrice
+					td
+						a(href="/quote/" + quote._id)
+							= quote.laptop.name
+					td
+						= quote.laptop.basePrice
