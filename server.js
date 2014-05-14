@@ -1,6 +1,6 @@
 var path = require('path'),
 	fs = require('fs'),
-	mongodb = require('mongodb'),
+	MongoClient = require('mongodb').MongoClient,
 	koa = require('koa'),
 	_ = require('koa-route'),
 	serve = require('koa-static'),
@@ -8,7 +8,7 @@ var path = require('path'),
 	swig = require('koa-swig'),
 	app = koa();
 
-mongodb.MongoClient.connect('mongodb://localhost/is217-final-exam', function(err, db) {
+MongoClient.connect('mongodb://localhost/is217-final-exam', function(err, db) {
 	if (err) {
 		throw err;
 	}
@@ -20,7 +20,7 @@ mongodb.MongoClient.connect('mongodb://localhost/is217-final-exam', function(err
 	app.use(serve(path.join(__dirname, 'app', 'public')));
 	app.use(body());
 	
-	require('./app')(app);
+	require('./app/index.js')(app);
 	
 	app.listen(3000);
 });
