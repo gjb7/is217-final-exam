@@ -1,20 +1,37 @@
 (function(global, $) {
 	function Configurator(data) {
-		this.data = data;
+		this.laptop = data;
+		this.componentOptions = {};
 		
 		this.configuratorElm = $('#configurator');
+		this.priceDisplayElm = $('#price');
 		
+		this._extractComponentOptions();
 		this._render();
+	}
+	
+	Configurator.prototype._extractComponentOptions = function() {
+		var componentOptions = {};
+		
+		this.laptop.componentOptionGroups.forEach(function(group) {
+			group.componentOptions.forEach(function(option) {
+				componentOptions[option._id] = option;
+			});
+		});
+		
+		this.componentOptions = componentOptions;
 	}
 	
 	Configurator.prototype._render = function() {
 		var self = this;
 		
-		this.data.componentOptionGroups.forEach(function(group) {
+		this.laptop.componentOptionGroups.forEach(function(group) {
 			var fieldset = self._renderComponentOptionGroup(group);
 			
 			self.configuratorElm.append(fieldset);
 		});
+		
+		this._updateTotal();
 	}
 	
 	Configurator.prototype._renderComponentOptionGroup = function(group) {
@@ -47,13 +64,27 @@
 		input.attr({
 			type: 'radio',
 			name: group._id,
-			value: option._id
+			value: option._id,
 		});
+		input.addClass('componentOption');
 		
 		label.append(input);
 		label.append(option.name);
 		
 		return radioDiv;
+	}
+	
+	Configurator.prototype._updateTotal = function() {
+		var total = this.laptop.basePrice;
+		var self = this;
+		
+		$('.componentOption:checked').each(function() {
+			var name = $(this).attr('name');
+			var option = self.componentOptions[name];
+			total += option.price;
+		});
+		
+		this.priceDisplayElm.text(total);
 	}
 	
 	global.Configurator = Configurator;
