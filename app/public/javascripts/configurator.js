@@ -68,6 +68,11 @@
 		});
 		input.addClass('componentOption');
 		
+		var self = this;
+		input.click(function() {
+			self._updateTotal();
+		})
+		
 		label.append(input);
 		label.append(option.name);
 		
@@ -79,7 +84,7 @@
 		var self = this;
 		
 		$('.componentOption:checked').each(function() {
-			var name = $(this).attr('name');
+			var name = $(this).attr('value');
 			var option = self.componentOptions[name];
 			total += option.price;
 		});
