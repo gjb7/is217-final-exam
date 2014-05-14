@@ -7,27 +7,27 @@ mongoose.connect('mongodb://localhost/is217-final-exam');
 
 var laptop = {
 	name: 'MacBook Air',
-	basePrice: 100000,
+	basePrice: 1000,
 	componentOptionGroups: [
 		{
 			title: 'Screen Size',
 			componentOptions: [
 				{ name: '11-inch', price: 0},
-				{ name: '15-inch', price: 20000}
+				{ name: '15-inch', price: 200}
 			]
 		},
 		{
 			title: 'Hard Drive Size',
 			componentOptions: [
 				{ name: '128 GB', price: 0},
-				{ name: '256 GB', price: 20000}
+				{ name: '256 GB', price: 200}
 			]
 		},
 		{
 			title: 'RAM',
 			componentOptions: [
 				{ name: '8 GB', price: 0},
-				{ name: '16 GB', price: 20000}
+				{ name: '16 GB', price: 200}
 			]
 		},
 	]
