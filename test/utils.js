@@ -24,7 +24,11 @@ describe('utils', function() {
 			
 			expect(utils.calculateCost(laptop, componentOptions)).to.equal(1400);
 			
+			laptop.basePrice = 2000;
+			componentOptions[0].price = 300;
+			componentOptions[1].price = -100;
 			
+			expect(utils.calculateCost(laptop, componentOptions)).to.equal(2400);
 		});
 	});
 });
