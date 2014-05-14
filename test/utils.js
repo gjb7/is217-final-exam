@@ -1,5 +1,6 @@
 var mocha = require('mocha'),
 	chai = require('chai'),
+	expect = chai.expect,
 	utils = require('../app/lib/utils');
 
 describe('utils', function() {
