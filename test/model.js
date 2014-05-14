@@ -8,7 +8,7 @@ var mocha = require('mocha'),
 describe('Quote', function() {
 	describe('#totalCost', function() {
 		it('should calculate correctly', function() {
-			
+			var quote = new Quote;
 		});
 	});
 });
