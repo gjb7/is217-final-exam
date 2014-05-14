@@ -15,7 +15,6 @@
     "koa-logger": "^1.2.1",
     "koa-route": "^1.1.4",
     "koa-static": "^1.4.5",
-    "koa-swig": "^0.4.1",
-    "mongodb": "^1.4.4"
+    "koa-swig": "^0.4.1"
   }
 }
