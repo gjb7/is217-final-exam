@@ -1,6 +1,7 @@
 var path = require('path'),
 	fs = require('fs'),
-	Promise = require('promise');
+	Promise = require('promise'),
+	loadModels = require('./model');
 
 module.exports = function(app) {
 	return loadControllers(app).then(loadModels);
