@@ -12,15 +12,15 @@ mongodb.MongoClient.connect('mongodb://localhost/is217-final-exam', function(err
 	if (err) {
 		throw err;
 	}
+	
+	swig(app, {
+		root: path.join(__dirname, 'app', 'views')
+	});
+	
+	app.use(serve(path.join(__dirname, 'app', 'public')));
+	app.use(body());
+	
+	require('./app')(app);
+	
+	app.listen(3000);
 });
-
-swig(app, {
-	root: path.join(__dirname, 'app', 'views')
-});
-
-app.use(serve(path.join(__dirname, 'app', 'public')));
-app.use(body());
-
-require('./app')(app);
-
-app.listen(3000);
