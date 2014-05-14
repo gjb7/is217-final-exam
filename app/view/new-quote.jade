@@ -7,3 +7,6 @@ block content
 		for group in laptop.componentOptionGroups
 			fieldset
 				legend= group.title
+					
+					for option in group.componentOptions
+						input(type="radio", name=group._id, value=option._id)
