@@ -1,6 +1,7 @@
 extends layout
 block content
 	p
-		a(href="") New Quote
+		a(href="/quote/new") New Quote
 	for quote in quotes
-		p= quote.laptop.name
+		p
+			a(href="/quote/" + quote.id) quote.laptop.name
