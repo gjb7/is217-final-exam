@@ -20,18 +20,54 @@ var laptop = {
 			title: 'Hard Drive Size',
 			componentOptions: [
 				{ name: '128 GB', price: 0},
-			{ name: '256 GB', price: 20000}
+				{ name: '256 GB', price: 20000}
 			]
 		},
 		{
 			title: 'RAM',
 			componentOptions: [
 				{ name: '8 GB', price: 0},
-			{ name: '16 GB', price: 20000}
+				{ name: '16 GB', price: 20000}
 			]
 		},
 	]
+};
+
+function insertComponentOptions(componentOptions) {
+	return ComponentOption.remove().exec().then(function() {
+		return ComponentOption.create.apply(ComponentOption, componentOptions);
+	});
 }
+
+function insertComponentOptionGroup(componentOptionGroup) {
+	return insertComponentOptions(componentOptionGroup.componentOptions).then(function(componentOptions) {
+		return ComponentOptionGroup.remove().exec().then(function() {
+			componentOptionGroup.componentOptions = componentOptions.map(function(option) {
+				return option._id;
+			});
+			
+			return ComponentOptionGroup.create(componentOptionGroup);
+		});
+	});
+}
+
+/*
+function insertLaptop(laptop) {
+	var componentOptionGroups = [];
+	
+	var returnPromise = initialPromise = new Promise;
+	
+	laptop.componentOptionGroups.forEach(function(componentOptionGroup) {
+		returnPromise = returnPromise.then(insertComponentOptionGroup(componentOptionGroup));
+	});
+	
+	returnPromise.then(function() {
+		
+	})
+	
+	initialPromise.fulfill();
+}
+*/
 
 /*
 function insertComponentOptions() {
