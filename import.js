@@ -33,3 +33,74 @@ var laptop = {
 	]
 };
 
+insertLaptop(laptop, function() {
+	process.exit();
+});
+
+function insertComponentOptions(componentOptions, cb) {
+	componentOptions.push(cb);
+	
+	ComponentOption.create.apply(ComponentOption, componentOptions);
+}
+
+function insertComponentOptionGroup(componentOptionGroup, cb) {
+	insertComponentOptions(componentOptionGroup.componentOptions, function(err) {
+		if (err) {
+			throw err;
+		}
+		
+		var optionNames = componentOptionGroup.componentOptions.map(function(option) {
+			return option.name;
+		});
+		
+		ComponentOption.find({}).where('name').in(optionNames).exec(function(err, objects) {
+			componentOptionGroup.componentOptions = objects.map(function(option) {
+				return option._id;
+			});
+			
+			ComponentOptionGroup.create(componentOptionGroup, cb);
+		});
+	});
+}
+
+function insertLaptop(laptop, callback) {
+	var i = 0;
+	
+	function insertNextComponentOptionGroup(cb) {
+		if (i == laptop.componentOptionGroups.length) {
+			cb();
+			
+			return;
+		}
+		
+		insertComponentOptionGroup(laptop.componentOptionGroups[i], function(err) {
+			if (err) {
+				throw err;
+			}
+			
+			i++;
+			
+			insertNextComponentOptionGroup(cb);
+		});
+	}
+	
+	ComponentOption.remove().exec().then(function() {
+		return ComponentOptionGroup.remove().exec();
+	}).then(function() {
+		return Laptop.remove().exec();
+	}).then(function() {
+		insertNextComponentOptionGroup(function() {
+			var groupNames = laptop.componentOptionGroups.map(function(group) {
+				return group.title;
+			});
+			
+			ComponentOptionGroup.find({}).where('title').in(groupNames).exec(function(err, objects) {
+				laptop.componentOptionGroups = objects.map(function(group) {
+					return group._id;
+				});
+				
+				Laptop.create(laptop, callback);
+			});
+		});
+	});
+}
