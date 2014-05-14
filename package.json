@@ -14,6 +14,7 @@
     "koa-body": "0.0.4",
     "koa-route": "^1.1.4",
     "koa-static": "^1.4.5",
-    "koa-swig": "^0.4.1"
+    "koa-swig": "^0.4.1",
+    "mongo": "^0.1.0"
   }
 }
