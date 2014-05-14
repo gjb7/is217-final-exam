@@ -6,21 +6,17 @@ var mocha = require('mocha'),
 describe('utils', function() {
 	describe('#calculateCost', function() {
 		var laptop = {
-			name: 'Laptop',
 			basePrice: 1000
 		};
 		
 		var componentOptions = [
 			{
-				name: '16GB',
 				price: 200
 			},
 			{
-				name: '128GB',
 				price: 0
 			},
 			{
-				name: '15-inch',
 				price: 200
 			}
 		];
