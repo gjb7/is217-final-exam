@@ -2,7 +2,7 @@ var path = require('path'),
 	fs = require('fs'),
 	Promise = require('promise');
 
-module.exports = function(app, cb) {
+module.exports = function(app) {
 	return new Promise(function(fulfill, reject) {
 		var controllerDir = path.join(__dirname, 'controller');
 		
