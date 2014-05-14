@@ -1,8 +1,6 @@
 var path = require('path'),
 	fs = require('fs'),
-	promise = require('promise');
-
-var readdir = Promise.denodeify(fs.readdir);
+	Promise = require('promise');
 
 module.exports = function(app, cb) {
 	return new Promise(function(fulfill, reject) {
