@@ -5,14 +5,14 @@ block append javascripts
 	script(src="/javascripts/configurator.js" type="text/javascript")
 	
 	script(type="text/javascript")
-		// TODO: Create configurator thing.
+		| new Configurator(!{JSON.stringify(laptop)})
 
 block content
 	form(method="post", action="/quote/new", role="form")
 		h3= laptop.name
 		
 		.row
-			.col-md-9.configurator
+			.col-md-9#configurator
 				for group in laptop.componentOptionGroups
 					fieldset
 						legend= group.title
