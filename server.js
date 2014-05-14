@@ -5,9 +5,16 @@ var path = require('path'),
 	serve = require('koa-static'),
 	body = require('koa-body'),
 	logger = require('koa-logger'),
+	views = require('koa-views'),
 	app = koa();
 
 mongoose.connect('mongodb://localhost/is217-final-exam');
+
+app.use(views({
+	map: {
+		html: 'underscore'
+	}
+}));
 
 app.use(logger());
 app.use(serve(path.join(__dirname, 'app', 'public')));
