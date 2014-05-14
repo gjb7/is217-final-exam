@@ -34,7 +34,7 @@ module.exports = function(app) {
 	});
 	
 	app.get('/quote/:id', function *(id) {
-		var quote = yield Quote.findById(this.params.id).exec();
+		var quote = yield Quote.findById(this.params.id).populate('laptop componentOptions').exec();
 		
 		yield this.render('view-quote', {
 			quote: quote
