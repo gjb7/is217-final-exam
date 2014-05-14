@@ -4,7 +4,7 @@
   "description": "IS 217 Final Exam",
   "main": "app.js",
   "scripts": {
-    "start": "node --harmony app.js",
+    "start": "node --harmony server.js",
     "test": "mocha"
   },
   "author": "Grant Butler",
