@@ -18,10 +18,11 @@ MongoClient.connect('mongodb://localhost/is217-final-exam', function(err, db) {
 		ext: 'swig'
 	});
 	
+	app.use(logger());
 	app.use(serve(path.join(__dirname, 'app', 'public')));
 	app.use(body());
 	
-	require('./app')(app);
-	
-	app.listen(3000);
+	require('./app')(app, function() {
+		app.listen(3000);
+	});
 });
