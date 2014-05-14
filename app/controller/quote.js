@@ -33,8 +33,8 @@ module.exports = function(app) {
 		this.redirect('/quote');
 	});
 	
-	app.get('/quote/([0-9a-z]+)', function *(id) {
-		var quote = yield Quote.findById(id).exec();
+	app.get('/quote/:id', function *(id) {
+		var quote = yield Quote.findById(this.params.id).exec();
 		
 		yield this.render('view-quote', {
 			quote: quote
