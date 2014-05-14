@@ -1,2 +1,3 @@
 var mocha = require('mocha'),
-	chai = require('chai');
+	chai = require('chai'),
+	expect = chai.expect;
