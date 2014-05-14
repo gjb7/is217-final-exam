@@ -7,6 +7,8 @@ var mocha = require('mocha'),
 	ComponentOption = require('../app/model/ComponentOption'),
 	Quote = require('../app/model/Quote');
 
+mockgoose(mongoose);
+
 describe('Quote', function() {
 	describe('#totalCost', function() {
 		it('should calculate correctly', function() {
