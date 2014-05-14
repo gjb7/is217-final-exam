@@ -8,6 +8,8 @@ var path = require('path'),
 	logger = require('koa-logger'),
 	app = koa();
 
+mongoose.connect('mongodb://localhost/is217-final-exam');
+
 swig(app, {
 	root: path.join(__dirname, 'app', 'view'),
 	ext: 'swig'
