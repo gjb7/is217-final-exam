@@ -1,4 +1,8 @@
 (function(global, $, accounting) {
+	/*
+	 * Constructor pattern or Prototype pattern. Take your pick. Why did I use them?
+	 * Cause I wanted to make a class in JavaScript and that's how you make a class in JavaScript.
+	 */
 	function Configurator(data) {
 		this.laptop = data;
 		this.componentOptions = {};
